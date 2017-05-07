@@ -7,11 +7,43 @@
 
 public class ThreeSum {
 
-    public static boolean threeSum(int[] array, int i, int j, int target) {
-        Sorting.insertionSort(array); //Replace with Merge Sort
+    private int [] array;
+    private int start;
+    private int end;
+    private int target;
+
+    public boolean sumEqualTarget(int [] arrayIn, int startIn, int endIn, int targetIn){
+
+        setArray(arrayIn);
+        setStart(startIn);
+        setEnd(endIn);
+        setTarget(targetIn);
+        return(threeSum(array, start, end, target));
+    }
+
+    private void setArray(int [] arrayIn){
+        array = arrayIn;
+    }
+
+    private void setStart(int startIn){
+        start = startIn;
+    }
+
+    private void setEnd(int endIn){
+        end = endIn;
+    }
+
+    private void setTarget(int targetIn){
+        target = targetIn;
+    }
+
+    private boolean threeSum(int[] array, int i, int j, int target) {
+        InsertionSort sorter = new InsertionSort();
+        sorter.sort(array); //Replace with Merge Sort
+        TwoSum decideIf = new TwoSum();
         for (i = 0; i < array.length; i++) {
 
-            if (TwoSum.twoSumRec(array, i+1 , array.length-1, (target-array[i])) == true) {
+            if (decideIf.sumEqualTarget(array, i+1 , array.length-1, (target-array[i])) == true) {
                 return true;
             }
         }
@@ -21,8 +53,9 @@ public class ThreeSum {
 
     public static void main(String[] args) {
 
+        ThreeSum decideIf = new ThreeSum();
         int[] array = {5,3,1,2,4};
-        System.out.println(threeSum(array, 0, array.length - 1, 12)); //True test case
-        System.out.println(threeSum(array, 0, array.length - 1, 13)); //False test case
+        System.out.println(decideIf.sumEqualTarget(array, 0, array.length - 1, 12));
+        System.out.println(decideIf.sumEqualTarget(array, 0, array.length - 1, 13));
     }
 }

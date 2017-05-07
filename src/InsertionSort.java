@@ -1,10 +1,21 @@
 /**
  * Created by Brandon Markwalder on 4/4/2017.
- * Various Sorting Algorithms from Introduction to Algorithms, 3rd Edition (MIT Press)
+ * InsertionSort Algorithm from Introduction to Algorithms, 3rd Edition (MIT Press)
  */
-public class Sorting {
+public class InsertionSort {
 
-    public static void insertionSort (int[] array) {
+    private int [] array;
+
+    public void sort(int[] arrayIn){
+        setArray(arrayIn);
+        insertionSort(array);
+    }
+
+    private void setArray(int [] arrayIn){
+        array = arrayIn;
+    }
+
+    private void insertionSort (int[] array) {
 
         for (int j = 2; j < array.length; j++) {
             int key = array[j];
@@ -21,7 +32,9 @@ public class Sorting {
     public static void main(String[] args) {
 
         int[] array = {1,4,3,2,6};
-        insertionSort(array);
+
+        InsertionSort is = new InsertionSort();
+        is.sort(array);
 
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);

@@ -6,7 +6,37 @@
 
 public class TwoSum {
 
-    public static boolean twoSumRec (int[] array, int i, int j, int target) {
+    private int [] array;
+    private int start;
+    private int end;
+    private int target;
+
+    public boolean sumEqualTarget(int [] arrayIn, int startIn, int endIn, int targetIn){
+
+        setArray(arrayIn);
+        setStart(startIn);
+        setEnd(endIn);
+        setTarget(targetIn);
+        return(twoSumRec(array, start, end, target));
+    }
+
+    private void setArray(int [] arrayIn){
+        array = arrayIn;
+    }
+
+    private void setStart(int startIn){
+        start = startIn;
+    }
+
+    private void setEnd(int endIn){
+        end = endIn;
+    }
+
+    private void setTarget(int targetIn){
+        target = targetIn;
+    }
+
+    private boolean twoSumRec (int[] array, int i, int j, int target) {
 
         if (i < j) {
             if (array[i] + array[j] == target) {
@@ -24,9 +54,10 @@ public class TwoSum {
 
     public static void main(String[] args) {
 
+        TwoSum decideIf = new TwoSum();
         int[] array = {1,2,3,4,5};
-        System.out.println(twoSumRec(array, 0, array.length-1, 7)); //True test case
-        System.out.println(twoSumRec(array, 0, array.length-1, 10)); //False test case
+        System.out.println(decideIf.sumEqualTarget(array, 0, array.length-1, 7)); //True test case
+        System.out.println(decideIf.sumEqualTarget(array, 0, array.length-1, 10)); //False test case
 
     }
 }
