@@ -38,8 +38,8 @@ public class ThreeSum {
     }
 
     private boolean threeSum(int[] array, int i, int j, int target) {
-        InsertionSort sorter = new InsertionSort();
-        sorter.sort(array); //Replace with Merge Sort
+        MergeSort sorter = new MergeSort();
+        sorter.sort(array);
         TwoSum decideIf = new TwoSum();
         for (i = 0; i < array.length; i++) {
 
